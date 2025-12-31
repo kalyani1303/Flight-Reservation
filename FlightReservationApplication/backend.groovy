@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('Code-pull'){
             steps{
-                git branch: 'main', url: 'https://github.com/mayurmwagh/flight-reservation-app.git'
+                git branch: 'main', url: 'https://github.com/kalyani1303/Flight-Reservation.git'
             }
         }
         stage('Code-build'){
@@ -22,16 +22,15 @@ pipeline{
                         mvn sonar:sonar -Dsonar.projectKey=flight-reservation
                     '''
                 }
-            }
-            
+            }     
         }
         stage('Docker-build'){
             steps{
                 sh '''
                     cd FlightReservationApplication
-                    docker build . -t mayurwagh/flightreservation-new:latest
-                    docker push mayurwagh/flightreservation-new:latest
-                    docker rmi mayurwagh/flightreservation-new:latest
+                    docker build . -t kalyani1303/flightreservation-new:latest
+                    docker push kalyani1303/flightreservation-new:latest
+                    docker rmi kalyani1303/flightreservation-new:latest
                 '''
             }
         }
